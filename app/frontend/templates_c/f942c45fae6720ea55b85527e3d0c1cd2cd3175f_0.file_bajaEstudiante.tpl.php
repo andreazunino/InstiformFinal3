@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2025-01-01 16:03:26
+/* Smarty version 5.4.0, created on 2025-02-16 12:32:55
   from 'file:templates/bajaEstudiante.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_6775593e37d0c3_19692435',
+  'unifunc' => 'content_67b1cce7e68299_22438278',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f942c45fae6720ea55b85527e3d0c1cd2cd3175f' => 
     array (
       0 => 'templates/bajaEstudiante.tpl',
-      1 => 1735737954,
+      1 => 1739705534,
       2 => 'file',
     ),
   ),
@@ -21,56 +21,14 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_6775593e37d0c3_19692435 (\Smarty\Template $_smarty_tpl) {
+function content_67b1cce7e68299_22438278 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
 <?php $_smarty_tpl->renderSubTemplate('file:templates/head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?>
 <body>
-<style>
-    body {
-        background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
-        min-height: 100vh;
-        margin: 0;
-        font-family: 'Arial', sans-serif;
-    }
-    .logo-small {
-        max-width: 50px;
-        margin-top: 10px;
-    }
-    .navbar {
-        margin-bottom: 20px;
-    }
-    .btn-logout {
-        background-color: #d33f4d;
-        color: #ffffff;
-        border: none;
-        padding: 10px 20px;
-        font-size: 14px;
-        font-weight: bold;
-        text-transform: uppercase;
-        border-radius: 50px;
-        transition: background-color 0.3s ease;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-    }
-    .btn-logout:hover {
-        background-color: #63597a;
-    }
-    .btn-custom {
-        background-color: #4a90e2;
-        color: #ffffff;
-        border: none;
-        padding: 15px 30px;
-        font-size: 18px;
-        font-weight: bold;
-        text-transform: uppercase;
-        border-radius: 50px;
-        transition: background-color 0.3s ease;
-    }
-</style>
+
 
 <!-- Botón para cerrar sesión -->
 <button class="btn btn-logout" onclick="window.location.href='index.php'">Cerrar sesión</button>

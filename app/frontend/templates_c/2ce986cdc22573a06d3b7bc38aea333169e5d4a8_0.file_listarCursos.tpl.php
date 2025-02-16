@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2025-01-30 22:50:29
+/* Smarty version 5.4.0, created on 2025-02-16 12:41:17
   from 'file:templates/listarCursos.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_679bf425c7a970_27739797',
+  'unifunc' => 'content_67b1cedd3530c6_56696802',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2ce986cdc22573a06d3b7bc38aea333169e5d4a8' => 
     array (
       0 => 'templates/listarCursos.tpl',
-      1 => 1735737954,
+      1 => 1739705699,
       2 => 'file',
     ),
   ),
@@ -21,59 +21,14 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_679bf425c7a970_27739797 (\Smarty\Template $_smarty_tpl) {
+function content_67b1cedd3530c6_56696802 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
 <meta charset="UTF-8">
 <?php $_smarty_tpl->renderSubTemplate('file:templates/head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?> <!-- Aquí se incluye el archivo head.tpl que puedes configurar con los metadatos comunes -->
-<body>
-    <style>
-        body {
-            background: url('fondo.avif') no-repeat center center fixed;
-            background-size: cover;
-            background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Degradado de fondo */
-            min-height: 100vh;
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-        }
-        .logo-small {
-            max-width: 50px;
-            margin-top: 10px;
-        }
-        .navbar {
-            margin-bottom: 20px;
-        }
-        .btn-logout {
-            background-color: #d33f4d;
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            font-size: 14px;
-            font-weight: bold;
-            text-transform: uppercase;
-            border-radius: 50px;
-            transition: background-color 0.3s ease;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
-        .btn-logout:hover {
-            background-color: #63597a;
-        }
-        .btn-custom {
-            background-color: #4a90e2;
-            color: #ffffff;
-            border: none;
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: bold;
-            text-transform: uppercase;
-            border-radius: 50px;
-            transition: background-color 0.3s ease;
-        }
-    </style>
+
 
     <button class="btn btn-logout" onclick="window.location.href='index.php'">Cerrar sesión</button>
 

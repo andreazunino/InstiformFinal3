@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2025-02-16 12:42:40
-  from 'file:templates/listarInscripciones.tpl' */
+/* Smarty version 5.4.0, created on 2025-02-16 12:47:22
+  from 'file:templates/inscribirEstudiante.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_67b1cf303c8238_13560774',
+  'unifunc' => 'content_67b1d04abb63c7_61280656',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '038b62c76b68fe9b5a5de3d7c4cd98105c1e3a33' => 
+    '72a8f17939b4ea42eec7dc014de127bf4a544e2f' => 
     array (
-      0 => 'templates/listarInscripciones.tpl',
-      1 => 1739705715,
+      0 => 'templates/inscribirEstudiante.tpl',
+      1 => 1739705688,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_67b1cf303c8238_13560774 (\Smarty\Template $_smarty_tpl) {
+function content_67b1d04abb63c7_61280656 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
@@ -35,7 +35,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform\\app\\frontend\\templates';
 
 <div class="container-fluid text-center welcome-section">
     <img src="Logo instiform.png" alt="Logo de Instiform" class="img-fluid logo-small">
-    <h1 class="welcome-heading">Listado de Inscripciones</h1>
+    <h1 class="welcome-heading">Inscribir Estudiante en Cursos</h1>
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -52,6 +52,16 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform\\app\\frontend\\templates';
 </nav>
 
 <div class="container text-center">
+    <!-- Formulario para buscar cursos por DNI -->
+    <h3>Buscar Cursos Disponibles</h3>
+    <form method="POST">
+        <div class="form-group">
+            <label for="dni">DNI del Estudiante:</label>
+            <input type="text" class="form-control" id="dni" name="dni" placeholder="Ingrese el DNI del estudiante" required>
+        </div>
+        <button type="submit" class="btn btn-custom mt-3">Buscar</button>
+    </form>
+
     <!-- Mostrar mensaje -->
     <?php if ($_smarty_tpl->getValue('mensaje')) {?>
         <div class="alert alert-<?php echo $_smarty_tpl->getValue('mensaje_tipo');?>
@@ -59,35 +69,40 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform\\app\\frontend\\templates';
 </div>
     <?php }?>
 
-    <!-- Mostrar lista de inscripciones -->
-    <?php if ($_smarty_tpl->getValue('inscripciones')) {?>
-        <h3 class="mt-4">Inscripciones Registradas</h3>
+    <!-- Mostrar cursos disponibles -->
+    <?php if ($_smarty_tpl->getValue('cursos')) {?>
+        <h3 class="mt-4">Cursos Disponibles</h3>
         <table class="table table-striped mt-3">
             <thead>
                 <tr>
-                    <th>DNI Estudiante</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Curso</th>
+                    <th>Nombre del Curso</th>
+                    <th>Cupo Disponible</th>
+                    <th>Acción</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('inscripciones'), 'inscripcion');
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('cursos'), 'curso');
 $foreach0DoElse = true;
-foreach ($_from ?? [] as $_smarty_tpl->getVariable('inscripcion')->value) {
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('curso')->value) {
 $foreach0DoElse = false;
 ?>
-                    <tr>
-                        <td><?php echo $_smarty_tpl->getValue('inscripcion')['dni'];?>
+                <tr>
+                    <td><?php echo $_smarty_tpl->getValue('curso')['nombre'];?>
 </td>
-                        <td><?php echo $_smarty_tpl->getValue('inscripcion')['nombre'];?>
+                    <td><?php echo $_smarty_tpl->getValue('curso')['cupo'];?>
 </td>
-                        <td><?php echo $_smarty_tpl->getValue('inscripcion')['apellido'];?>
-</td>
-                        <td><?php echo $_smarty_tpl->getValue('inscripcion')['curso'];?>
-</td>
-                    </tr>
+                    <td>
+                        <!-- Botón para inscribir al estudiante -->
+                        <form method="POST" class="d-inline">
+                            <input type="hidden" name="idCurso" value="<?php echo $_smarty_tpl->getValue('curso')['id'];?>
+">
+                            <input type="hidden" name="dniEstudiante" value="<?php echo $_smarty_tpl->getValue('dniEstudiante');?>
+">
+                            <button type="submit" class="btn btn-success btn-sm">Inscribir</button>
+                        </form>
+                    </td>
+                </tr>
                 <?php
 }
 $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
@@ -108,6 +123,5 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
 >
 </body>
 </html>
-
 <?php }
 }

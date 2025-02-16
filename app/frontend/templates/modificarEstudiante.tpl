@@ -2,72 +2,6 @@
 <html lang="es">
 {include 'templates/head.tpl'}
 <body>
-<style>
-    body {
-        background: url('fondo.avif') no-repeat center center fixed;
-        background-size: cover;
-        background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Degradado de fondo */
-        min-height: 100vh;
-        margin: 0;
-        font-family: 'Arial', sans-serif;
-    }
-    .logo-small {
-        max-width: 50px;
-        margin-top: 10px;
-    }
-    .navbar {
-        margin-bottom: 20px;
-    }
-    .btn-logout {
-        background-color: #d33f4d;
-        color: #ffffff;
-        border: none;
-        padding: 10px 20px;
-        font-size: 14px;
-        font-weight: bold;
-        text-transform: uppercase;
-        border-radius: 50px;
-        transition: background-color 0.3s ease;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-    }
-    .btn-logout:hover {
-        background-color: #63597a;
-    }
-    .btn-custom {
-        background-color: #4a90e2;
-        color: #ffffff;
-        border: none;
-        padding: 15px 30px;
-        font-size: 18px;
-        font-weight: bold;
-        text-transform: uppercase;
-        border-radius: 50px;
-        transition: background-color 0.3s ease;
-    }
-    .btn-custom:hover {
-        background-color: #357ABD;
-    }
-    .container {
-        margin-top: 30px;
-    }
-    .welcome-section img {
-        margin: 10px 0;
-    }
-    .form-group {
-        margin-bottom: 15px;
-    }
-    .form-control {
-        border-radius: 10px;
-        padding: 10px;
-        font-size: 14px;
-    }
-    .alert {
-        border-radius: 10px;
-        padding: 15px;
-    }
-</style>
 
 <button class="btn btn-logout" onclick="window.location.href='index.php'">Cerrar sesión</button>
 
@@ -94,7 +28,7 @@
 <div class="container text-center">
     <!-- Mostrar mensajes de éxito o error -->
     {if $mensaje}
-        <div class="alert alert-{$mensaje_tipo} alert-dismissible fade show" role="alert">
+        <div class="alert alert-success alert-dismissible fade show" role="alert" style="background-color: #d4edda; color: #155724;">
             {$mensaje}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>

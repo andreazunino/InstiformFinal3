@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dni'])) {
                     $smarty->assign('mensaje', "Cursos en los que estás inscrito.");
                     $smarty->assign('mensaje_tipo', 'success');
                 } else {
-                    $smarty->assign('mensaje', "No estás inscrito en ningún curso.");
+                    $smarty->assign('mensaje', "No estás inscripto en ningún curso.");
                     $smarty->assign('mensaje_tipo', 'warning');
                 }
             } else {

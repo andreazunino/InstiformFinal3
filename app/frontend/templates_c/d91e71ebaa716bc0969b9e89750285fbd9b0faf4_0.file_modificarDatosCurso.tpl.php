@@ -1,6 +1,32 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.4.0, created on 2025-02-16 12:41:41
+  from 'file:templates/modificarDatosCurso.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.4.0',
+  'unifunc' => 'content_67b1cef5642e05_06588188',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'd91e71ebaa716bc0969b9e89750285fbd9b0faf4' => 
+    array (
+      0 => 'templates/modificarDatosCurso.tpl',
+      1 => 1739705737,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:templates/head.tpl' => 1,
+  ),
+))) {
+function content_67b1cef5642e05_06588188 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform\\app\\frontend\\templates';
+?><!DOCTYPE html>
 <html lang="es">
-{include 'templates/head.tpl'}
+<?php $_smarty_tpl->renderSubTemplate('file:templates/head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
 <body>
 
 
@@ -30,11 +56,13 @@
     <h2>Formulario para Modificar Datos del Curso</h2>
     
     <!-- Mostrar alertas -->
-    {if isset($mensaje)}
-        <div class="alert alert-{$mensaje_tipo}" role="alert">
-            {$mensaje}
+    <?php if ((null !== ($_smarty_tpl->getValue('mensaje') ?? null))) {?>
+        <div class="alert alert-<?php echo $_smarty_tpl->getValue('mensaje_tipo');?>
+" role="alert">
+            <?php echo $_smarty_tpl->getValue('mensaje');?>
+
         </div>
-    {/if}
+    <?php }?>
 
     <!-- Formulario para modificar los datos del curso -->
     <form action="modificarDatosCurso.php" method="POST">
@@ -42,9 +70,18 @@
             <label for="curso">Seleccionar Curso:</label>
             <select class="form-control" id="curso" name="curso" onchange="loadCourseDetails()" required>
                 <!-- Opciones llenadas por PHP -->
-                {foreach from=$cursos item=curso}
-                    <option value="{$curso.id}">{$curso.nombre}</option>
-                {/foreach}
+                <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('cursos'), 'curso');
+$foreach0DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('curso')->value) {
+$foreach0DoElse = false;
+?>
+                    <option value="<?php echo $_smarty_tpl->getValue('curso')['id'];?>
+"><?php echo $_smarty_tpl->getValue('curso')['nombre'];?>
+</option>
+                <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
             </select>
         </div>
         <div class="form-group">
@@ -59,8 +96,14 @@
     </form>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<?php echo '<script'; ?>
+ src="https://code.jquery.com/jquery-3.5.1.slim.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"><?php echo '</script'; ?>
+>
 
 </body>
 </html>
+<?php }
+}
