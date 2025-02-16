@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dni'])) {
             $estudiante = $stmtEstudiante->fetch(PDO::FETCH_ASSOC);
 
             if ($estudiante) {
-                // Buscar cursos disponibles para el estudiante
+                // Buscar cursos disponibles para el estudiante, solo aquellos con cupo mayor a 0
                 $stmtCursos = $pdo->prepare("
                     SELECT c.id, c.nombre, c.cupo
                     FROM curso c
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dni'])) {
                         SELECT i.id_curso
                         FROM inscripcion i
                         WHERE i.dni_estudiante = :dniEstudiante
-                    )
+                    ) AND c.cupo > 0
                 ");
                 $stmtCursos->bindParam(':dniEstudiante', $dniEstudiante, PDO::PARAM_STR);
                 $stmtCursos->execute();
@@ -34,12 +34,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dni'])) {
 
                 // Verificar si hay cursos disponibles
                 if ($cursosDisponibles) {
+                    // Recorrer los cursos y agregar un mensaje si el cupo es 0
+                    foreach ($cursosDisponibles as $key => $curso) {
+                        if ($curso['cupo'] == 0) {
+                            $cursosDisponibles[$key]['mensaje'] = "Este curso no tiene cupo disponible.";
+                        }
+                    }
+
                     $smarty->assign('cursos', $cursosDisponibles);
                     $smarty->assign('dniEstudiante', $dniEstudiante); // Pasar el DNI para la inscripción
                     $smarty->assign('mensaje', "Cursos disponibles para el estudiante.");
                     $smarty->assign('mensaje_tipo', 'success');
                 } else {
-                    $smarty->assign('mensaje', "El estudiante ya está inscrito en todos los cursos.");
+                    $smarty->assign('mensaje', "No hay cursos disponibles con cupo para este estudiante.");
                     $smarty->assign('mensaje_tipo', 'warning');
                 }
             } else {
@@ -79,6 +86,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idCurso'], $_POST['dn
         $smarty->assign('mensaje_tipo', 'danger');
     }
 }
-
 
 $smarty->display('templates/inscribirEstudiante.tpl');

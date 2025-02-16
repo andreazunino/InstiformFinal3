@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
-<meta charset="UTF-8">
-{include 'templates/head.tpl'} <!-- Aquí se incluye el archivo head.tpl que puedes configurar con los metadatos comunes -->
-
+<head>
+    <meta charset="UTF-8">
+    {include 'templates/head.tpl'} <!-- Aquí se incluye el archivo head.tpl que puedes configurar con los metadatos comunes -->
+    <title>Listado de Cursos</title>
+</head>
+<body>
 
     <button class="btn btn-logout" onclick="window.location.href='index.php'">Cerrar sesión</button>
 
@@ -17,8 +20,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto d-flex">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="menuAdministrador.php" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
+                <li class="nav-item">
+                    <a class="nav-link" href="menuAdministrador.php" id="navbarDropdownMenuLink">
                         Volver al Menú Administrador
                     </a>
                 </li>

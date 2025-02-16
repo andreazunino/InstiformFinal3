@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.4.0, created on 2025-02-16 12:41:17
+/* Smarty version 5.4.0, created on 2025-02-16 13:21:17
   from 'file:templates/listarCursos.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_67b1cedd3530c6_56696802',
+  'unifunc' => 'content_67b1d83d5e9a24_67748011',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2ce986cdc22573a06d3b7bc38aea333169e5d4a8' => 
     array (
       0 => 'templates/listarCursos.tpl',
-      1 => 1739705699,
+      1 => 1739707648,
       2 => 'file',
     ),
   ),
@@ -21,14 +21,17 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:templates/head.tpl' => 1,
   ),
 ))) {
-function content_67b1cedd3530c6_56696802 (\Smarty\Template $_smarty_tpl) {
+function content_67b1d83d5e9a24_67748011 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform\\app\\frontend\\templates';
 ?><!DOCTYPE html>
 <html lang="es">
-<meta charset="UTF-8">
-<?php $_smarty_tpl->renderSubTemplate('file:templates/head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+<head>
+    <meta charset="UTF-8">
+    <?php $_smarty_tpl->renderSubTemplate('file:templates/head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?> <!-- Aquí se incluye el archivo head.tpl que puedes configurar con los metadatos comunes -->
-
+    <title>Listado de Cursos</title>
+</head>
+<body>
 
     <button class="btn btn-logout" onclick="window.location.href='index.php'">Cerrar sesión</button>
 
@@ -43,8 +46,8 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform\\app\\frontend\\templates';
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto d-flex">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="menuAdministrador.php" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
+                <li class="nav-item">
+                    <a class="nav-link" href="menuAdministrador.php" id="navbarDropdownMenuLink">
                         Volver al Menú Administrador
                     </a>
                 </li>
