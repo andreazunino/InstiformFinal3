@@ -20,14 +20,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dni'])) {
             if ($estudiante) {
                 // Buscar cursos disponibles para el estudiante
                 $stmtCursos = $pdo->prepare("
-                    SELECT c.id, c.nombre, c.cupo
-                    FROM curso c
-                    WHERE c.id NOT IN (
-                        SELECT i.id_curso
-                        FROM inscripcion i
-                        WHERE i.dni_estudiante = :dniEstudiante
-                    )
-                ");
+                SELECT c.id, c.nombre, c.cupo
+                FROM curso c
+                WHERE c.id NOT IN (
+                    SELECT i.id_curso
+                    FROM inscripcion i
+                    WHERE i.dni_estudiante = :dniEstudiante
+                )
+                AND c.cupo IS NOT NULL
+                AND c.cupo > 0
+            ");
+            
                 $stmtCursos->bindParam(':dniEstudiante', $dniEstudiante, PDO::PARAM_STR);
                 $stmtCursos->execute();
                 $cursosDisponibles = $stmtCursos->fetchAll(PDO::FETCH_ASSOC);

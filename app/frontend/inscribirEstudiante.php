@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dni'])) {
             $stmtEstudiante->bindParam(':dni', $dniEstudiante, PDO::PARAM_STR);
             $stmtEstudiante->execute();
             $estudiante = $stmtEstudiante->fetch(PDO::FETCH_ASSOC);
-
+            
             if ($estudiante) {
                 // Buscar cursos disponibles para el estudiante, solo aquellos con cupo mayor a 0
                 $stmtCursos = $pdo->prepare("
@@ -68,7 +68,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dni'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idCurso'], $_POST['dniEstudiante'])) {
     $idCurso = $_POST['idCurso'];
     $dniEstudiante = $_POST['dniEstudiante'];
+    
+    $stmtCursos = $pdo->prepare("SELECT *
+                                 FROM curso");
+    $stmtCursos->execute();
+    $cursosDisponibles = $stmtCursos->fetchAll(PDO::FETCH_ASSOC);
 
+    foreach ($cursosDisponibles as $key => $curso) {
+                        if ($curso['id'] == $idCurso ) {
+                            $cupo = $curso['cupo'];
+                        }
+                    }
+   
+  
     try {
         // Insertar la inscripción en la base de datos
         $stmt = $pdo->prepare("
@@ -81,6 +93,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idCurso'], $_POST['dn
 
         $smarty->assign('mensaje', "El estudiante fue inscrito exitosamente en el curso.");
         $smarty->assign('mensaje_tipo', 'success');
+        // Descuenta en 1 el cupo en el curso
+        $cupo = $cupo -1;
+        $stmt = $pdo->prepare("UPDATE curso SET cupo = :cupo WHERE id = :idCurso");
+        $stmt->bindParam(':cupo', $cupo, PDO::PARAM_INT);
+        $stmt->bindParam(':idCurso', $idCurso, PDO::PARAM_INT);
+
+        // Ejecutar la consulta
+        $stmt->execute();
+        
     } catch (PDOException $e) {
         $smarty->assign('mensaje', "Error al inscribir al estudiante: " . $e->getMessage());
         $smarty->assign('mensaje_tipo', 'danger');

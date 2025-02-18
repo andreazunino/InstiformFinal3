@@ -1,26 +1,30 @@
 <?php
-/* Smarty version 5.4.0, created on 2025-02-16 13:24:02
+/* Smarty version 5.4.0, created on 2025-02-18 23:16:44
   from 'file:templates/index.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
-if ($_smarty_tpl->getCached()->isFresh($_smarty_tpl, array (
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.4.0',
-  'unifunc' => 'content_67b1d8e283a232_55380707',
+  'unifunc' => 'content_67b506cc533e02_25465533',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '83a1e73f6e3fa28c6d26af6ae5161345c20e5d11' => 
+    '086483fcc397cb0e56d67c8a47b765b3742b7b79' => 
     array (
       0 => 'templates/index.tpl',
-      1 => 1735737954,
+      1 => 1739916358,
       2 => 'file',
     ),
   ),
-  'cache_lifetime' => 120,
+  'includes' => 
+  array (
+  ),
 ))) {
-function content_67b1d8e283a232_55380707 (\Smarty\Template $_smarty_tpl) {
-$_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform\\app\\frontend\\templates';
-?><!DOCTYPE html>
+function content_67b506cc533e02_25465533 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\xampp\\htdocs\\InstiformFinal3\\app\\frontend\\templates';
+$_smarty_tpl->getCompiled()->nocache_hash = '143969826567b506cc4efe66_21283496';
+?>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -124,11 +128,18 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform\\app\\frontend\\templates';
     </div>
 
     <!-- Importa las librerías JavaScript de Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <?php echo '<script'; ?>
+ src="https://code.jquery.com/jquery-3.5.1.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 
-    <script>
+    <?php echo '<script'; ?>
+>
     function showAdminLoginForm() {
         // Ocultar el botón de administrador y mostrar el formulario de inicio de sesión
         document.getElementById('btn-administrador').style.display = 'none';
@@ -151,7 +162,8 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\Instiform\\app\\frontend\\templates';
             alert('Contraseña incorrecta');
         }
     });
-    </script>
+    <?php echo '</script'; ?>
+>
 </body>
 
 </html>
